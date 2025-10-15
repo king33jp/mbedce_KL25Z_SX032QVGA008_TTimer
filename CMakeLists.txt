@@ -37,12 +37,13 @@ include(mbed-os/tools/cmake/mbed_toolchain_setup.cmake)
 ### Set up your project.
 # The project name will be made available in the ${PROJECT_NAME} variable.
 # If you like, you can specify a version here, which CMake will make available in the ${PROJECT_VERSION} variable.
-project(MbedCEHelloWorld
+project(KL25Z_SX032QVGA008_TTimer
         # VERSION 1.0.0
         LANGUAGES C CXX ASM)
 
 ### Include Mbed project setup file
 include(mbed_project_setup)
+
 
 ######################################################################################################
 ### Block of including project folders
@@ -58,13 +59,21 @@ add_subdirectory(mbed-os)
 ###--------------------------------------------------------------------------------------------------
 ## Add another subdirectory, for example subdirectory of a library (if needed)
 #add_subdirectory(YourLibrary)
+add_subdirectory(EEPROM_AT93C46)
+add_subdirectory(MMA8451Q)
+add_subdirectory(RCS620S)
+add_subdirectory(RTC_S35190)
+add_subdirectory(SX032QVGA008)
+#add_subdirectory(TFT_fonts)
 
 ### End of block
 ######################################################################################################
 
 ### add executable (necessary everytime)
 # This will compile an elf file named the same as the project with the given source files.
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} main.cpp oto.cpp cardreader.cpp)
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/TFT_fonts)
 
 ######################################################################################################
 ### Link libraries block
@@ -83,6 +92,7 @@ endif()
 
 ### link user library (if needed)
 #target_link_libraries(${PROJECT_NAME} YourLibrary)
+target_link_libraries(${PROJECT_NAME} EEPROM_AT93C46 MMA8451Q RCS620S RTC_S35190 SX032QVGA008)
 
 # This generates build rules to generate bin/hex files, and to flash the code if you have configured an
 # upload method.

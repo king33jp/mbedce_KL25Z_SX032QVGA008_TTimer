@@ -1,0 +1,3 @@
+add_library(EEPROM_AT93C46 EEPROM_AT93C46.cpp)
+target_include_directories(EEPROM_AT93C46 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(EEPROM_AT93C46 PUBLIC mbed-baremetal)

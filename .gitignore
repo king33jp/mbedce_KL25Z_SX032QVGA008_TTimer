@@ -28,12 +28,26 @@ cmake-build-*/
 
 # VS Code build dir
 build/
+cmake_build/
+*.elf
+*.bin
+*.hex
+*.map
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
 
 # VS Code config files
 .vscode/
 
 # Python stuff
 *.pyc
+
+# mbed-os
+mbed-os/
 
 # Mac stuff
 .DS_Store

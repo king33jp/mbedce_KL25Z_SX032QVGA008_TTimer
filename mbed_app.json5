@@ -9,8 +9,9 @@
             // "target.application-profile": "bare-metal"
         },
 
-        "NUCLEO_F070RB": {
-            "target.application-profile": "bare-metal"
+        "KL25Z": {
+            "target.application-profile": "bare-metal",
+            "platform.printf-float": false
         }
     },
 
